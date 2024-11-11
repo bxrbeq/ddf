@@ -67,7 +67,7 @@ async def websocket_handler(websocket):
         # verify login with twitch api
         # put in selected round
         await websocket.send('{"success": true}')
-        
+
         await websocket.close()
     finally:
         print(f'user "{user} disconnected"')
@@ -77,15 +77,7 @@ async def websocket_handler(websocket):
 async def start_websocket_server():
     async with serve(websocket_handler, '', portWS):
         print(f"WebSocket Server is running on port {portWS}...")
-        await asyncio.Future()  # Run forever
-
-if __name__ == "__main__":
-    # Run HTTP server in the background
-    loop = asyncio.get_event_loop()
-    loop.run_in_executor(None, start_http_server)
-    
-    # Run WebSocket server
-    loop.run_until_complete(start_websocket_server())
+        await asyncio.Future()  # run forever
 
 
 if __name__ == "__main__":
