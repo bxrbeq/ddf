@@ -1,0 +1,95 @@
+/*tpir*/
+
+
+html {
+background-color: #181822;
+font-family: arial, sans-serif;
+}
+
+span {
+    color: #bcbcff;
+
+}
+
+.header {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,34,0) 0%, rgba(188,188,255,0.1) 50%, rgba(24,24,34,0) 100%, rgba(24,24,34,1) 100%);
+    /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,34,0) 0%, rgba(242,181,195,1) 33%, rgba(188,188,255,0.7) 66%, rgba(24,24,34,0) 100%, rgba(24,24,34,1) 100%);*/
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 10px 1px -6px rgba(188, 188, 255, 0.2);
+}
+
+.oben {
+    text-decoration: none;
+    padding-top: 0px;
+    color: #bcbcff;
+    font-size: 50px;
+}
+
+.oben a:link {
+    color: #bcbcff;
+    text-decoration: none;
+}
+
+.oben a:visited {
+    color: #bcbcff;
+}
+
+.oben a:hover {
+    color: #f8b4bc;
+}
+
+.haupttext {
+    position: relative;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: 0.3s ease;
+}
+
+.logo img:hover {
+    box-shadow: 1px 1px 3px  rgb(188, 188, 255), -1px -1px 3px  rgb(188, 188, 255), 1px -1px 3px  rgb(188, 188, 255), -1px 1px 3px  rgb(188, 188, 255);
+}
+
+.info {
+    color: #bcbcff;
+    font-size: 40px;
+}
+
+.fehler {
+    margin: 0px;
+    color: #bcbcff;
+    font-size: 70px;
+}
+
+.back {
+    color:#181822;
+    background-color: #bcbcff;
+    border: 2px solid #bcbcff;
+    border-radius: 2px;
+    margin-left: 30px;
+    font-size: 25px;
+    transition: 0.3s ease;
+}
+
+.back:hover {
+    background-color: #f8b4bc;
+    border: 2px solid #f8b4bc;
+}
+
+.back a:link {
+    color:#181822;
+    text-decoration: none;
+}
+
+.back a:visited {
+    color: #181822;
+}
