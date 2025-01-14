@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h1>WebSocket Test</h1>
+    <label for="gameId">Game ID:</label>
+    <input type="text" id="gameId" placeholder="Enter game ID" />
+    <button id="connectButton">Connect</button>
+    <p id="status">Status: Not connected</p>
+    <ul id="messages"></ul>
+    <input type="text" id="messageInput" placeholder="Type a message" />
+    <button id="sendButton" disabled>Send</button>
+
+    <script>
+        let websocket;
+
+        document.getElementById("connectButton").addEventListener("click", async () => {
+            const gameId = document.getElementById("gameId").value.trim();
+            if (!gameId) {
+                alert("Please enter a valid game ID!");
+                return;
+            }
+
+            const wsUrl = `ws://192.168.188.123:9090/game/${gameId}`;
+            websocket = new WebSocket(wsUrl);
+
+            websocket.onopen = () => {
+                document.getElementById("status").textContent = `Status: Connected to game ID ${gameId}`;
+                document.getElementById("sendButton").disabled = false;
+            };
+
+            websocket.onmessage = (event) => {
+                const messagesList = document.getElementById("messages");
+                const newMessage = document.createElement("li");
+                newMessage.textContent = `Server: ${event.data}`;
+                messagesList.appendChild(newMessage);
+            };
+
+            websocket.onerror = (error) => {
+                console.error("WebSocket error:", error);
+                document.getElementById("status").textContent = "Status: Connection error";
+            };
+
+            websocket.onclose = () => {
+                document.getElementById("status").textContent = "Status: Disconnected";
+                document.getElementById("sendButton").disabled = true;
+            };
+        });
+
+        document.getElementById("sendButton").addEventListener("click", () => {
+            const message = document.getElementById("messageInput").value.trim();
+            if (message && websocket && websocket.readyState === WebSocket.OPEN) {
+                websocket.send(message);
+                const messagesList = document.getElementById("messages");
+                const newMessage = document.createElement("li");
+                newMessage.textContent = `You: ${message}`;
+                messagesList.appendChild(newMessage);
+                document.getElementById("messageInput").value = "";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,2 +1,2 @@
 # ddf
-website with python-backendfo easy orgnaisation
+website with python-backend for easy orgnaisation
